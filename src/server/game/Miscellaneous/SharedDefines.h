@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2008-2019 TrinityCore <https://www.trinitycore.org/>
- * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
+ * This file is part of the TrinityCore Project. See AUTHORS file for Copyright information
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -19,7 +18,6 @@
 #ifndef TRINITY_SHAREDDEFINES_H
 #define TRINITY_SHAREDDEFINES_H
 
-#include "DBCEnums.h"
 #include "Define.h"
 #include "DetourNavMesh.h"
 
@@ -62,13 +60,6 @@ enum SpellEffIndex : uint8
 // used in script definitions
 #define EFFECT_FIRST_FOUND 254
 #define EFFECT_ALL 255
-
-enum Roles
-{
-    ROLE_TANK      = 0,
-    ROLE_HEALER    = 1,
-    ROLE_DAMAGE    = 2
-};
 
 // loot modes for creatures and gameobjects, bitmask!
 enum LootModes
@@ -136,100 +127,6 @@ enum Gender
     GENDER_NONE                        =  2
 };
 
-// ChrRaces.db2 (8.0.1.27075)
-enum Races
-{
-    RACE_NONE                   = 0,
-    RACE_HUMAN                  = 1,
-    RACE_ORC                    = 2,
-    RACE_DWARF                  = 3,
-    RACE_NIGHTELF               = 4,
-    RACE_UNDEAD_PLAYER          = 5,
-    RACE_TAUREN                 = 6,
-    RACE_GNOME                  = 7,
-    RACE_TROLL                  = 8,
-    RACE_GOBLIN                 = 9,
-    RACE_BLOODELF               = 10,
-    RACE_DRAENEI                = 11,
-    //RACE_FEL_ORC            = 12,
-    //RACE_NAGA               = 13,
-    //RACE_BROKEN             = 14,
-    //RACE_SKELETON           = 15,
-    //RACE_VRYKUL             = 16,
-    //RACE_TUSKARR            = 17,
-    //RACE_FOREST_TROLL       = 18,
-    //RACE_TAUNKA             = 19,
-    //RACE_NORTHREND_SKELETON = 20,
-    //RACE_ICE_TROLL          = 21,
-    RACE_WORGEN                 = 22,
-    //RACE_GILNEAN            = 23,
-    RACE_PANDAREN_NEUTRAL       = 24,
-    RACE_PANDAREN_ALLIANCE      = 25,
-    RACE_PANDAREN_HORDE         = 26,
-    RACE_NIGHTBORNE             = 27,
-    RACE_HIGHMOUNTAIN_TAUREN    = 28,
-    RACE_VOID_ELF               = 29,
-    RACE_LIGHTFORGED_DRAENEI    = 30,
-    RACE_ZANDALARI_TROLL        = 31,
-    RACE_KUL_TIRAN              = 32,
-    //RACE_THIN_HUMAN         = 33,
-    RACE_DARK_IRON_DWARF        = 34,
-    RACE_VULPERA                = 35,
-    RACE_MAGHAR_ORC             = 36,
-    RACE_MECHAGNOME             = 37
-};
-
-// max+1 for player race
-#define MAX_RACES         38
-
-#define RACEMASK_HUMAN      1
-#define RACEMASK_ORC        2
-
-#define RACEMASK_ALL_PLAYABLE                     \
-    ((UI64LIT(1)<<(RACE_HUMAN-1))               | \
-     (UI64LIT(1)<<(RACE_ORC-1))                 | \
-     (UI64LIT(1)<<(RACE_DWARF-1))               | \
-     (UI64LIT(1)<<(RACE_NIGHTELF-1))            | \
-     (UI64LIT(1)<<(RACE_UNDEAD_PLAYER-1))       | \
-     (UI64LIT(1)<<(RACE_TAUREN-1))              | \
-     (UI64LIT(1)<<(RACE_GNOME-1))               | \
-     (UI64LIT(1)<<(RACE_TROLL-1))               | \
-     (UI64LIT(1)<<(RACE_BLOODELF-1))            | \
-     (UI64LIT(1)<<(RACE_DRAENEI-1))             | \
-     (UI64LIT(1)<<(RACE_GOBLIN-1))              | \
-     (UI64LIT(1)<<(RACE_WORGEN-1))              | \
-     (UI64LIT(1)<<(RACE_PANDAREN_NEUTRAL-1))    | \
-     (UI64LIT(1)<<(RACE_PANDAREN_ALLIANCE-1))   | \
-     (UI64LIT(1)<<(RACE_PANDAREN_HORDE-1))      | \
-     (UI64LIT(1)<<(RACE_NIGHTBORNE-1))          | \
-     (UI64LIT(1)<<(RACE_HIGHMOUNTAIN_TAUREN-1)) | \
-     (UI64LIT(1)<<(RACE_VOID_ELF-1))            | \
-     (UI64LIT(1)<<(RACE_LIGHTFORGED_DRAENEI-1)) | \
-     (UI64LIT(1)<<(RACE_ZANDALARI_TROLL-1))     | \
-     (UI64LIT(1)<<(RACE_KUL_TIRAN-1))           | \
-     (UI64LIT(1)<<(RACE_DARK_IRON_DWARF-1))     | \
-     (UI64LIT(1)<<(RACE_MAGHAR_ORC-1))          | \
-	 (UI64LIT(1)<<(RACE_MECHAGNOME-1))          | \
-	 (UI64LIT(1)<<(RACE_VULPERA-1)))
-
-#define RACEMASK_NEUTRAL (UI64LIT(1)<<(RACE_PANDAREN_NEUTRAL-1))
-
-#define RACEMASK_ALLIANCE                         \
-    ((UI64LIT(1)<<(RACE_HUMAN-1))               | \
-     (UI64LIT(1)<<(RACE_DWARF-1))               | \
-     (UI64LIT(1)<<(RACE_NIGHTELF-1))            | \
-     (UI64LIT(1)<<(RACE_GNOME-1))               | \
-     (UI64LIT(1)<<(RACE_DRAENEI-1))             | \
-     (UI64LIT(1)<<(RACE_WORGEN-1))              | \
-     (UI64LIT(1)<<(RACE_PANDAREN_ALLIANCE-1))   | \
-     (UI64LIT(1)<<(RACE_VOID_ELF-1))            | \
-     (UI64LIT(1)<<(RACE_KUL_TIRAN-1))           | \
-     (UI64LIT(1)<<(RACE_LIGHTFORGED_DRAENEI-1)) | \
-     (UI64LIT(1)<<(RACE_DARK_IRON_DWARF-1))     | \
-	 (UI64LIT(1)<<(RACE_MECHAGNOME-1)))
-
-#define RACEMASK_HORDE (RACEMASK_ALL_PLAYABLE & ~RACEMASK_ALLIANCE)
-
 // Class value is index in ChrClasses.dbc
 enum Classes : uint8
 {
@@ -248,7 +145,7 @@ enum Classes : uint8
     CLASS_DEMON_HUNTER  = 12
 };
 
-// max1 for player class
+// max+1 for player class
 #define MAX_CLASSES       13
 
 #define CLASSMASK_ALL_PLAYABLE     \
@@ -355,7 +252,7 @@ enum SpellSchools : uint16
 
 #define MAX_SPELL_SCHOOL                  7
 
-enum SpellSchoolMask : uint16
+enum SpellSchoolMask
 {
     SPELL_SCHOOL_MASK_NONE    = 0x00,                       // not exist
     SPELL_SCHOOL_MASK_NORMAL  = (1 << SPELL_SCHOOL_NORMAL), // PHYSICAL (Armor)
@@ -407,13 +304,6 @@ enum SpellCategory
 {
     SPELL_CATEGORY_FOOD             = 11,
     SPELL_CATEGORY_DRINK            = 59
-};
-
-enum WorgenRacialSpells
-{
-    SPELL_RUNNING_WILD_LEARN        = 94098,
-    SPELL_TWO_FORMS_RACIAL          = 68996,
-    SPELL_ALTERED_FORM_RACIAL       = 97709
 };
 
 const uint32 ItemQualityColors[MAX_ITEM_QUALITY] =
@@ -569,7 +459,7 @@ enum SpellAttr3
     SPELL_ATTR3_UNK23                            = 0x00800000, // 23
     SPELL_ATTR3_REQ_OFFHAND                      = 0x01000000, // 24 Req offhand weapon
     SPELL_ATTR3_TREAT_AS_PERIODIC                = 0x02000000, // 25 Makes the spell appear as periodic in client combat logs - used by spells that trigger another spell on each tick
-    SPELL_ATTR3_CAN_PROC_WITH_TRIGGERED          = 0x04000000, // 26 auras with this attribute can proc from triggered spell casts with SPELL_ATTR3_TRIGGERED_CAN_TRIGGER_PROC_2 (67736  52999)
+    SPELL_ATTR3_CAN_PROC_WITH_TRIGGERED          = 0x04000000, // 26 auras with this attribute can proc from triggered spell casts with SPELL_ATTR3_TRIGGERED_CAN_TRIGGER_PROC_2 (67736 + 52999)
     SPELL_ATTR3_DRAIN_SOUL                       = 0x08000000, // 27 only drain soul has this flag
     SPELL_ATTR3_UNK28                            = 0x10000000, // 28
     SPELL_ATTR3_NO_DONE_BONUS                    = 0x20000000, // 29 Ignore caster spellpower and done damage mods?  client doesn't apply spellmods for those spells
@@ -1049,7 +939,7 @@ enum CharacterSlot
 };
 
 // Languages.dbc (6.0.2.18988)
-enum Language : uint32
+enum Language
 {
     LANG_UNIVERSAL         = 0,
     LANG_ORCISH            = 1,
@@ -1086,19 +976,11 @@ enum Language : uint32
 
 #define LANGUAGES_COUNT   31
 
-enum FactionSelection
-{
-    JOIN_HORDE      = 0,
-    JOIN_ALLIANCE   = 1
-};
-
 enum TeamId
 {
     TEAM_ALLIANCE = 0,
     TEAM_HORDE,
-    TEAM_NEUTRAL,
-
-    TEAM_MAX = TEAM_NEUTRAL
+    TEAM_NEUTRAL
 };
 
 enum Team
@@ -1285,7 +1167,7 @@ enum SpellEffectName
     SPELL_EFFECT_ALLOW_CONTROL_PET                  = 168, // NYI
     SPELL_EFFECT_DESTROY_ITEM                       = 169,
     SPELL_EFFECT_UPDATE_ZONE_AURAS_AND_PHASES       = 170, // NYI
-    SPELL_EFFECT_SUMMON_OBJECT_PERSONNAL            = 171, // Summons gamebject visible by summoner only
+    SPELL_EFFECT_171                                = 171, // Summons gamebject
     SPELL_EFFECT_RESURRECT_WITH_AURA                = 172,
     SPELL_EFFECT_UNLOCK_GUILD_VAULT_TAB             = 173, // Guild tab unlocked (guild perk)
     SPELL_EFFECT_APPLY_AURA_ON_PET                  = 174, // NYI
@@ -1316,8 +1198,8 @@ enum SpellEffectName
     SPELL_EFFECT_199                                = 199,
     SPELL_EFFECT_HEAL_BATTLEPET_PCT                 = 200, // NYI
     SPELL_EFFECT_ENABLE_BATTLE_PETS                 = 201, // NYI
-    SPELL_EFFECT_APPLY_AURA_WITH_AMOUNT             = 202,
-    SPELL_EFFECT_REMOVE_AURA_2                      = 203,
+    SPELL_EFFECT_202                                = 202, // some sort of apply aura effect
+    SPELL_EFFECT_203                                = 203,
     SPELL_EFFECT_CHANGE_BATTLEPET_QUALITY           = 204,
     SPELL_EFFECT_LAUNCH_QUEST_CHOICE                = 205,
     SPELL_EFFECT_ALTER_ITEM                         = 206, // NYI
@@ -1368,7 +1250,7 @@ enum SpellEffectName
     SPELL_EFFECT_SET_GARRISON_CACHE_SIZE            = 251,
     SPELL_EFFECT_TELEPORT_UNITS                     = 252,
     SPELL_EFFECT_GIVE_HONOR                         = 253,
-    SPELL_EFFECT_DASH                               = 254,
+    SPELL_EFFECT_254                                = 254,
     SPELL_EFFECT_LEARN_TRANSMOG_SET                 = 255,
     SPELL_EFFECT_256                                = 256,
     SPELL_EFFECT_257                                = 257,
@@ -2195,7 +2077,7 @@ enum AuraStateType
     AURA_STATE_BERSERKING                   = 3,            // C T |
     AURA_STATE_FROZEN                       = 4,            //  c t| frozen target
     AURA_STATE_JUDGEMENT                    = 5,            // C   |
-    AURA_STATE_HEALTHLESS_25_PERCENT        = 6,            // CcT |
+    //AURA_STATE_UNKNOWN6                   = 6,            //     | not used
     AURA_STATE_HUNTER_PARRY                 = 7,            // C   |
     //AURA_STATE_UNKNOWN7                   = 7,            //  c  | creature cheap shot / focused bursts spells
     //AURA_STATE_UNKNOWN8                   = 8,            //    t| test spells
@@ -2420,23 +2302,23 @@ enum Targets
     TARGET_UNK_115                     = 115,
     TARGET_UNK_116                     = 116,
     TARGET_UNK_117                     = 117,
-    TARGET_UNIT_TARGET_CAN_RAID        = 118,
-    TARGET_UNIT_CASTER_AREA_RAID_DEATH = 119,
-    TARGET_UNIT_CASTER_PET             = 120,
-    TARGET_UNIT_TARGET_DEAD            = 121,
-    TARGET_UNIT_CASTER_AREA_ENEMY      = 122,
-    TARGET_UNIT_CASTER_LOOT_RECIPIENTS = 123,
+    TARGET_UNK_118                     = 118,
+    TARGET_UNK_119                     = 119,
+    TARGET_UNK_120                     = 120,
+    TARGET_UNK_121                     = 121,
+    TARGET_UNK_122                     = 122,
+    TARGET_UNK_123                     = 123,
     TARGET_UNK_124                     = 124,
-    TARGET_DEST_CASTER_GROUND          = 125,
+    TARGET_UNK_125                     = 125,
     TARGET_UNK_126                     = 126,
-    TARGET_DEST_CASTER_ENEMY_CENTROID  = 127,
+    TARGET_UNK_127                     = 127,
     TARGET_UNK_128                     = 128,
     TARGET_UNIT_CONE_ENTRY_129         = 129,
     TARGET_UNK_130                     = 130,
     TARGET_UNK_131                     = 131,
-    TARGET_DEST_TARGET_ALLY            = 132,
+    TARGET_UNK_132                     = 132,
     TARGET_UNK_133                     = 133,
-    TARGET_UNIT_LINE_ENEMY_134         = 134,
+    TARGET_UNK_134                     = 134,
     TARGET_UNK_135                     = 135,
     TARGET_UNK_136                     = 136,
     TARGET_UNK_137                     = 137,
@@ -2444,7 +2326,7 @@ enum Targets
     TARGET_UNK_139                     = 139,
     TARGET_UNK_140                     = 140,
     TARGET_UNK_141                     = 141,
-    TARGET_DEST_LAST_QUEST_GIVER       = 142,
+    TARGET_UNK_142                     = 142,
     TARGET_UNK_143                     = 143,
     TARGET_UNK_144                     = 144,
     TARGET_UNK_145                     = 145,
@@ -2610,14 +2492,6 @@ enum GameObjectDestructibleState
     GO_DESTRUCTIBLE_DAMAGED     = 1,
     GO_DESTRUCTIBLE_DESTROYED   = 2,
     GO_DESTRUCTIBLE_REBUILDING  = 3
-};
-
-enum GameObjectBytes1Offsets : uint8
-{
-    GO_BYTES_1_OFFSET_STATE         = 0,
-    GO_BYTES_1_OFFSET_GO_TYPE       = 1,
-    GO_BYTES_1_OFFSET_ART_KIT       = 2,
-    GO_BYTES_1_OFFSET_ANIM_PROGRESS = 3,
 };
 
 // EmotesText.dbc (6.0.2.18988)
@@ -3981,6 +3855,55 @@ enum LockKeyType
     LOCK_KEY_SKILL = 2
 };
 
+// LockType.dbc (6.0.2.18988)
+enum LockType
+{
+    LOCKTYPE_LOCKPICKING           = 1,
+    LOCKTYPE_HERBALISM             = 2,
+    LOCKTYPE_MINING                = 3,
+    LOCKTYPE_DISARM_TRAP           = 4,
+    LOCKTYPE_OPEN                  = 5,
+    LOCKTYPE_TREASURE              = 6,
+    LOCKTYPE_CALCIFIED_ELVEN_GEMS  = 7,
+    LOCKTYPE_CLOSE                 = 8,
+    LOCKTYPE_ARM_TRAP              = 9,
+    LOCKTYPE_QUICK_OPEN            = 10,
+    LOCKTYPE_QUICK_CLOSE           = 11,
+    LOCKTYPE_OPEN_TINKERING        = 12,
+    LOCKTYPE_OPEN_KNEELING         = 13,
+    LOCKTYPE_OPEN_ATTACKING        = 14,
+    LOCKTYPE_GAHZRIDIAN            = 15,
+    LOCKTYPE_BLASTING              = 16,
+    LOCKTYPE_PVP_OPEN              = 17,
+    LOCKTYPE_PVP_CLOSE             = 18,
+    LOCKTYPE_FISHING               = 19,
+    LOCKTYPE_INSCRIPTION           = 20,
+    LOCKTYPE_OPEN_FROM_VEHICLE     = 21,
+    LOCKTYPE_ARCHAEOLOGY           = 22,
+    LOCKTYPE_PVP_OPEN_FAST         = 23,
+    LOCKTYPE_LUMBER_MILL           = 28,
+    LOCKTYPE_SKINNING              = 29,
+    LOCKTYPE_ANCIENT_MANA          = 30,
+    LOCKTYPE_WARBOARD              = 31,
+    LOCKTYPE_CLASSIC_HERBALISM     = 32,
+    LOCKTYPE_OUTLAND_HERBALISM     = 33,
+    LOCKTYPE_NORTHREND_HERBALISM   = 34,
+    LOCKTYPE_CATACLYSM_HERBALISM   = 35,
+    LOCKTYPE_PANDARIA_HERBALISM    = 36,
+    LOCKTYPE_DRAENOR_HERBALISM     = 37,
+    LOCKTYPE_LEGION_HERBALISM      = 38,
+    LOCKTYPE_KUL_TIRAN_HERBALISM   = 39,
+    LOCKTYPE_CLASSIC_MINING        = 40,
+    LOCKTYPE_OUTLAND_MINING        = 41,
+    LOCKTYPE_NORTHREND_MINING      = 42,
+    LOCKTYPE_CATACLYSM_MINING      = 43,
+    LOCKTYPE_PANDARIA_MINING       = 44,
+    LOCKTYPE_DRAENOR_MINING        = 45,
+    LOCKTYPE_LEGION_MINING         = 46,
+    LOCKTYPE_KUL_TIRAN_MINING      = 47,
+    LOCKTYPE_SKINNING_2            = 48
+};
+
 // this is important type for npcs!
 enum TrainerType
 {
@@ -4203,11 +4126,7 @@ enum HolidayIds
     HOLIDAY_ANNIVERSARY_9_YEARS      = 509,
     HOLIDAY_ANNIVERSARY_10_YEARS     = 514,
     HOLIDAY_CALL_TO_ARMS_DG          = 515,
-    //HOLIDAY_CALL_TO_ARMS_DG        = 516,
-    HOLIDAY_TIMEWALKER_WOTLK         = 559,
-    HOLIDAY_TIMEWALKER_BC            = 562,
-    HOLIDAY_TIMEWALKER_CATACLYSM     = 587,
-    HOLIDAY_TIMEWALKER_MOP           = 643,
+    //HOLIDAY_CALL_TO_ARMS_DG        = 516
 };
 
 enum QuestType
@@ -4219,150 +4138,88 @@ enum QuestType
     MAX_QUEST_TYPES                 = 4
 };
 
-// QuestInfo.db2 (7.3.2.25549)
+// QuestInfo.dbc (6.0.2.18988)
 enum QuestInfo
 {
-    QUEST_INFO_GROUP                                = 1,
-    QUEST_INFO_CLASS                                = 21,
-    QUEST_INFO_PVP                                  = 41,
-    QUEST_INFO_RAID                                 = 62,
-    QUEST_INFO_DUNGEON                              = 81,
-    QUEST_INFO_WORLD_EVENT                          = 82,
-    QUEST_INFO_LEGENDARY                            = 83,
-    QUEST_INFO_ESCORT                               = 84,
-    QUEST_INFO_HEROIC                               = 85,
-    QUEST_INFO_RAID_10                              = 88,
-    QUEST_INFO_RAID_25                              = 89,
-    QUEST_INFO_SCENARIO                             = 98,
-    QUEST_INFO_ACCOUNT                              = 102,
-    QUEST_INFO_SIDE_QUEST                           = 104,
-    QUEST_INFO_ARTIFACT                             = 107,
-    QUEST_INFO_WORLD_QUEST                          = 109,
-    QUEST_INFO_WORLD_QUEST_EPIC                     = 110,
-    QUEST_INFO_WORLD_QUEST_ELITE                    = 111,
-    QUEST_INFO_WORLD_QUEST_RARE_ELITE               = 112,
-    QUEST_INFO_WORLD_QUEST_PVP                      = 113,
-    QUEST_INFO_WORLD_QUEST_FIRST_AID                = 114,
-    QUEST_INFO_WORLD_QUEST_BATTLEPET                = 115,
-    QUEST_INFO_WORLD_QUEST_BLACKSMITHING            = 116,
-    QUEST_INFO_WORLD_QUEST_LEATHERWORKING           = 117,
-    QUEST_INFO_WORLD_QUEST_ALCHEMY                  = 118,
-    QUEST_INFO_WORLD_QUEST_HERBALISM                = 119,
-    QUEST_INFO_WORLD_QUEST_MINING                   = 120,
-    QUEST_INFO_WORLD_QUEST_TAILORING                = 121,
-    QUEST_INFO_WORLD_QUEST_ENGINEERING              = 122,
-    QUEST_INFO_WORLD_QUEST_ENCHANTING               = 123,
-    QUEST_INFO_WORLD_QUEST_SKINNINg                 = 124,
-    QUEST_INFO_WORLD_QUEST_JEWELCRAFTING            = 125,
-    QUEST_INFO_WORLD_QUEST_INSCRIPTION              = 126,
-    QUEST_INFO_EMISSARY                             = 128,
-    QUEST_INFO_WORLD_QUEST_ARCHEOLOGY               = 129,
-    QUEST_INFO_WORLD_QUEST_FISHING                  = 130,
-    QUEST_INFO_WORLD_QUEST_COOKING                  = 131,
-    QUEST_INFO_WORLD_QUEST_RARE_2                   = 135,
-    QUEST_INFO_WORLD_QUEST_RARE_ELITE_2             = 136,
-    QUEST_INFO_WORLD_QUEST_DUNGEON                  = 137,
-    QUEST_INFO_WORLD_QUEST_LEGION_INVASION          = 139,
-    QUEST_INFO_RATED_REWARD                         = 140,
-    QUEST_INFO_WORLD_QUEST_RAID                     = 141,
-    QUEST_INFO_WORLD_QUEST_LEGION_INVASION_ELITE    = 142,
-    QUEST_INFO_WORLD_QUEST_LEGIONFALL_CONTRIBUTION  = 143,
-    QUEST_INFO_WORLD_QUEST_LEGIONFALL               = 144,
-    QUEST_INFO_WORLD_QUEST_LEGIONFALL_DUNGEON       = 145,
-    QUEST_INFO_WORLD_QUEST_LEGION_INVASION_WRAPPER  = 146,
-    QUEST_INFO_PICK_POCKET                          = 148
+    QUEST_INFO_GROUP               = 1,
+    QUEST_INFO_CLASS               = 21,
+    QUEST_INFO_PVP                 = 41,
+    QUEST_INFO_RAID                = 62,
+    QUEST_INFO_DUNGEON             = 81,
+    QUEST_INFO_WORLD_EVENT         = 82,
+    QUEST_INFO_LEGENDARY           = 83,
+    QUEST_INFO_ESCORT              = 84,
+    QUEST_INFO_HEROIC              = 85,
+    QUEST_INFO_RAID_10             = 88,
+    QUEST_INFO_RAID_25             = 89,
+    QUEST_INFO_SCENARIO            = 98,
+    QUEST_INFO_ACCOUNT             = 102,
+    QUEST_INFO_SIDE_QUEST          = 104
 };
 
-// QuestSort.db2 (7.3.2.25549)
+// QuestSort.dbc (6.0)
 enum QuestSort
 {
-    QUEST_SORT_EPIC                         = 1,
-    QUEST_SORT_HALLOWS_END                  = 21,
-    QUEST_SORT_SEASONAL                     = 22,
-    QUEST_SORT_CATACLYSM                    = 23,
-    QUEST_SORT_HERBALISM                    = 24,
-    QUEST_SORT_BATTLEGROUNDS                = 25,
-    QUEST_SORT_DAY_OF_THE_DEAD              = 41,
-    QUEST_SORT_WARLOCK                      = 61,
-    QUEST_SORT_WARRIOR                      = 81,
-    QUEST_SORT_SHAMAN                       = 82,
-    QUEST_SORT_FISHING                      = 101,
-    QUEST_SORT_BLACKSMITHING                = 121,
-    QUEST_SORT_PALADIN                      = 141,
-    QUEST_SORT_MAGE                         = 161,
-    QUEST_SORT_ROGUE                        = 162,
-    QUEST_SORT_ALCHEMY                      = 181,
-    QUEST_SORT_LEATHERWORKING               = 182,
-    QUEST_SORT_ENGINEERING                  = 201,
-    QUEST_SORT_TREASURE_MAP                 = 221,
-    QUEST_SORT_TOURNAMENT                   = 241,
-    QUEST_SORT_HUNTER                       = 261,
-    QUEST_SORT_PRIEST                       = 262,
-    QUEST_SORT_DRUID                        = 263,
-    QUEST_SORT_TAILORING                    = 264,
-    QUEST_SORT_SPECIAL                      = 284,
-    QUEST_SORT_COOKING                      = 304,
-    QUEST_SORT_FIRST_AID                    = 324,
-    QUEST_SORT_LEGENDARY                    = 344,
-    QUEST_SORT_DARKMOON_FAIRE               = 364,
-    QUEST_SORT_AHN_QIRAJ_WAR                = 365,
-    QUEST_SORT_LUNAR_FESTIVAL               = 366,
-    QUEST_SORT_REPUTATION                   = 367,
-    QUEST_SORT_INVASION                     = 368,
-    QUEST_SORT_MIDSUMMER                    = 369,
-    QUEST_SORT_BREWFEST                     = 370,
-    QUEST_SORT_INSCRIPTION                  = 371,
-    QUEST_SORT_DEATH_KNIGHT                 = 372,
-    QUEST_SORT_JEWELCRAFTING                = 373,
-    QUEST_SORT_NOBLEGARDEN                  = 374,
-    QUEST_SORT_PILGRIMS_BOUNTY              = 375,
-    QUEST_SORT_LOVE_IS_IN_THE_AIR           = 376,
-    QUEST_SORT_ARCHAEOLOGY                  = 377,
-    QUEST_SORT_CHILDRENS_WEEK               = 378,
-    QUEST_SORT_FIRELANDS_INVASION           = 379,
-    QUEST_SORT_THE_ZANDALARI                = 380,
-    QUEST_SORT_ELEMENTAL_BONDS              = 381,
-    QUEST_SORT_PANDAREN_BREWMASTER          = 391,
-    QUEST_SORT_SCENARIO                     = 392,
-    QUEST_SORT_BATTLE_PETS                  = 394,
-    QUEST_SORT_MONK                         = 395,
-    QUEST_SORT_LANDFALL                     = 396,
-    QUEST_SORT_PANDAREN_CAMPAIGN            = 397,
-    QUEST_SORT_RIDING                       = 398,
-    QUEST_SORT_BRAWLERS_GUILD               = 399,
-    QUEST_SORT_PROVING_GROUNDS              = 400,
-    QUEST_SORT_GARRISON_CAMPAIGN            = 401,
-    QUEST_SORT_ASSAULT_ON_THE_DARK_PORTAL   = 402,
-    QUEST_SORT_GARRISON_SUPPORT             = 403,
-    QUEST_SORT_LOGGING                      = 404,
-    QUEST_SORT_PICKPOCKETING                = 405,
-    QUEST_SORT_ARTIFACT                     = 406,
-    QUEST_SORT_DEMON_HUNTER                 = 407,
-    QUEST_SORT_MINING                       = 408,
-    QUEST_SORT_WEEKEND_EVENT                = 409,
-    QUEST_SORT_ENCHANTING                   = 410,
-    QUEST_SORT_SKINNING                     = 411,
-    QUEST_SORT_WORLD_QUEST                  = 412,
-    QUEST_SORT_DEATH_KNIGHT_CAMPAIGN        = 413,
-    QUEST_SORT_DEMON_HUNTER_CAMPAIGN        = 416,
-    QUEST_SORT_DRUID_CAMPAIGN               = 417,
-    QUEST_SORT_HUNTER_CAMPAIGN              = 418,
-    QUEST_SORT_MONK_CAMPAIGN                = 419,
-    QUEST_SORT_MAGE_CAMPAIGN                = 420,
-    QUEST_SORT_PRIEST_CAMPAIGN              = 421,
-    QUEST_SORT_PALADIN_CAMPAIGN             = 422,
-    QUEST_SORT_SHAMAN_CAMPAIGN              = 423,
-    QUEST_SORT_ROGUE_CAMPAIGN               = 424,
-    QUEST_SORT_WARLOCK_CAMPAIGN             = 425,
-    QUEST_SORT_WARRIOR_CAMPAIGN             = 426,
-    QUEST_SORT_ORDER_HALL                   = 427,
-    QUEST_SORT_LEGIONFALL_CAMPAIGN          = 428,
-    QUEST_SORT_HUNT_FOR_ILLIDAN             = 429,
-    QUEST_SORT_PIRATES_DAY                  = 430,
-    QUEST_SORT_ARGUS_EXPEDITION             = 431,
-    QUEST_SORT_MOONKIN_FESTIVAL             = 433,
-    QUEST_SORT_KINGS_PATH                   = 434,
-    QUEST_SORT_DEATHS_OF_CHROMIE            = 435,
+    QUEST_SORT_EPIC                       = 1,
+    QUEST_SORT_HALLOWS_END                = 21,
+    QUEST_SORT_SEASONAL                   = 22,
+    QUEST_SORT_CATACLYSM                  = 23,
+    QUEST_SORT_HERBALISM                  = 24,
+    QUEST_SORT_BATTLEGROUNDS              = 25,
+    QUEST_SORT_DAY_OF_THE_DEAD            = 41,
+    QUEST_SORT_WARLOCK                    = 61,
+    QUEST_SORT_WARRIOR                    = 81,
+    QUEST_SORT_SHAMAN                     = 82,
+    QUEST_SORT_FISHING                    = 101,
+    QUEST_SORT_BLACKSMITHING              = 121,
+    QUEST_SORT_PALADIN                    = 141,
+    QUEST_SORT_MAGE                       = 161,
+    QUEST_SORT_ROGUE                      = 162,
+    QUEST_SORT_ALCHEMY                    = 181,
+    QUEST_SORT_LEATHERWORKING             = 182,
+    QUEST_SORT_ENGINEERING                = 201,
+    QUEST_SORT_TREASURE_MAP               = 221,
+    QUEST_SORT_TOURNAMENT                 = 241,
+    QUEST_SORT_HUNTER                     = 261,
+    QUEST_SORT_PRIEST                     = 262,
+    QUEST_SORT_DRUID                      = 263,
+    QUEST_SORT_TAILORING                  = 264,
+    QUEST_SORT_SPECIAL                    = 284,
+    QUEST_SORT_COOKING                    = 304,
+    QUEST_SORT_FIRST_AID                  = 324,
+    QUEST_SORT_LEGENDARY                  = 344,
+    QUEST_SORT_DARKMOON_FAIRE             = 364,
+    QUEST_SORT_AHN_QIRAJ_WAR              = 365,
+    QUEST_SORT_LUNAR_FESTIVAL             = 366,
+    QUEST_SORT_REPUTATION                 = 367,
+    QUEST_SORT_INVASION                   = 368,
+    QUEST_SORT_MIDSUMMER                  = 369,
+    QUEST_SORT_BREWFEST                   = 370,
+    QUEST_SORT_INSCRIPTION                = 371,
+    QUEST_SORT_DEATH_KNIGHT               = 372,
+    QUEST_SORT_JEWELCRAFTING              = 373,
+    QUEST_SORT_NOBLEGARDEN                = 374,
+    QUEST_SORT_PILGRIMS_BOUNTY            = 375,
+    QUEST_SORT_LOVE_IS_IN_THE_AIR         = 376,
+    QUEST_SORT_ARCHAEOLOGY                = 377,
+    QUEST_SORT_CHILDRENS_WEEK             = 378,
+    QUEST_SORT_FIRELANDS_INVASION         = 379,
+    QUEST_SORT_THE_ZANDALARI              = 380,
+    QUEST_SORT_ELEMENTAL_BONDS            = 381,
+    QUEST_SORT_PANDAREN_BREWMASTER        = 391,
+    QUEST_SORT_SCENARIO                   = 392,
+    QUEST_SORT_BATTLE_PETS                = 394,
+    QUEST_SORT_MONK                       = 395,
+    QUEST_SORT_LANDFALL                   = 396,
+    QUEST_SORT_PANDAREN_CAMPAIGN          = 397,
+    QUEST_SORT_RIDING                     = 398,
+    QUEST_SORT_BRAWLERS_GUILD             = 399,
+    QUEST_SORT_PROVING_GROUNDS            = 400,
+    QUEST_SORT_GARRISON_CAMPAIGN          = 401,
+    QUEST_SORT_ASSAULT_ON_THE_DARK_PORTAL = 402,
+    QUEST_SORT_GARRISON_SUPPORT           = 403,
+    QUEST_SORT_LOGGING                    = 404,
+    QUEST_SORT_PICKPOCKETING              = 405
 };
 
 inline uint8 ClassByQuestSort(int32 QuestSort)
@@ -4696,6 +4553,8 @@ inline SkillType SkillByLockType(LockType locktype)
 {
     switch (locktype)
     {
+        case LOCKTYPE_HERBALISM:   return SKILL_HERBALISM;
+        case LOCKTYPE_MINING:      return SKILL_MINING;
         case LOCKTYPE_FISHING:     return SKILL_FISHING;
         case LOCKTYPE_INSCRIPTION: return SKILL_INSCRIPTION;
         case LOCKTYPE_ARCHAEOLOGY: return SKILL_ARCHAEOLOGY;
@@ -5008,11 +4867,7 @@ enum SummonType
     SUMMON_TYPE_VEHICLE2    = 10,   // Oculus and Argent Tournament vehicles (3.3.5a)
     SUMMON_TYPE_LIGHTWELL   = 11,
     SUMMON_TYPE_JEEVES      = 12,
-    SUMMON_TYPE_UNK13       = 13,
-    SUMMON_TYPE_UNK14       = 14,
-    SUMMON_TYPE_UNK15       = 15,
-    SUMMON_TYPE_UNK16       = 16,
-    SUMMON_TYPE_UNK17       = 17,
+    SUMMON_TYPE_UNK13       = 13
 };
 
 enum EventId
@@ -6622,108 +6477,6 @@ enum class GameError : uint32
     ERR_ITEM_INTERACTION_NOT_ENOUGH_CURRENCY                        = 1045,
     ERR_CANT_USE_PROFANITY                                          = 1046,
     ERR_NOT_IN_PET_BATTLE                                           = 1047,
-};
-
-enum Maps : uint32
-{
-    MAP_EASTERN_KINGDOMS        = 0,
-    MAP_KALIMDOR                = 1,
-    MAP_OUTLAND                 = 530,
-    MAP_NORTHREND               = 571,
-    MAP_EBON_HOLD_DK_START_ZONE = 609,
-    MAP_PANDARIA                = 870,
-    MAP_DRAENOR                 = 1116,
-    MAP_WOD_BLASTED_LANDS_PHASE = 1190,
-    MAP_BROKEN_ISLANDS          = 1220,
-    MAP_TANAAN_JUNGLE_INTRO     = 1265,
-    MAP_TANAAN_DAM_EXPLODED     = 1307,
-    MAP_NELTHARION_LAIR         = 1458,
-    MAP_TANAAN_JUNGLE           = 1464,
-    MAP_DALARAN_UNDERBELLY      = 1502,
-};
-
-enum AreaName : uint32
-{
-    ZONE_DUN_MOROGH                                 = 1,
-    ZONE_ELWYNN_FOREST                              = 12,
-    ZONE_DUROTAR                                    = 14,
-    AREA_BARRENS_MERCHANT_COAST                     = 391,
-    ZONE_HOWLING_FJORD                              = 495,
-    AREA_DUN_MOROGH_GATES_OF_IRONFORGE              = 809,
-    AREA_DUROTAR_ROCKTUSK_FARM                      = 1296,
-    ZONE_UNDERCITY                                  = 1497,
-    ZONE_STORMWIND_CITY                             = 1519,
-    ZONE_ORGRIMMAR                                  = 1637,
-    ZONE_THUNDER_BLUFF                              = 1638,
-    ZONE_DARNASSUS                                  = 1657,
-    ZONE_EVERSONG_WOODS                             = 3430,
-    ZONE_NAGRAND                                    = 3518,
-    ZONE_NETHERSTORM                                = 3523,
-    ZONE_AZUREMYST_ISLE                             = 3524,
-    ZONE_EXODAR                                     = 3557,
-    AREA_AZUREMYST_ISLE_TRAITOR_COVE                = 3579,
-    AREA_HALAA                                      = 3628,
-    AREA_AZUREMYST_ISLE_SILVERMYST_ISLE             = 3639,
-    ZONE_SHATTRATH                                  = 3703,
-    AREA_NETHERSTORM_SOCRETHAR_SEAT                 = 3742,
-    AREA_NETHERSTORM_INVASION_POINT_OVERLORD        = 3900,
-    AREA_HOWLING_FJORD_SHATTERED_STRAITS            = 4064,
-    ZONE_ISLE_OF_QUEL_DANAS                         = 4080,
-    AREA_BOREAN_TUNDRA_NAXXANAR                     = 4128,
-    ZONE_WINTERGRASP                                = 4197,
-    ZONE_DALARAN_WOTLK                              = 4395,
-    AREA_STORM_PEAKS_VALLEY_ANCIENT_WINTERS         = 4437,
-    AREA_WINTERGRASP_THE_SUNKEN_RING                = 4538,
-    AREA_WINTERGRASP_THE_BROKEN_TEMPLATE            = 4539,
-    AREA_WINTERGRASP_FORTRESS                       = 4575,
-    AREA_WINTERGRASP_THE_CHILLED_QUAGMIRE           = 4589,
-    AREA_WINTERGRASP_WESTPARK_WORKSHOP              = 4611,
-    AREA_WINTERGRASP_EASTPARK_WORKSHOP              = 4612,
-    AREA_VARGOTH_RETREAT                            = 4637,
-    AREA_ULDUAR_FORMATION_GROUNDS                   = 4652,
-    AREA_ICECROWN_ARGENT_TOURNAMENT_FIELDS          = 4658,
-    AREA_ICECROWN_RING_OF_ASPIRANTS                 = 4670,
-    AREA_ICECROWN_RING_OF_ARGENT_VALIANTS           = 4671,
-    AREA_ICECROWN_RING_OF_ALLIANCE_VALIANTS         = 4672,
-    AREA_ICECROWN_RING_OF_HORDE_VALIANTS            = 4673,
-    AREA_ICECROWN_RING_OF_CHAMPIONS                 = 4669,
-    AREA_ICECROWN_SUNREAVER_PAVILION                = 4676,
-    AREA_ICECROWN_SILVER_COVENANT_PAVILION          = 4677,
-    ZONE_GILNEAS                                    = 4714,
-    AREA_GILNEAS_DUSKHAVEN                          = 4786,
-    ZONE_TOL_BARAD_PENINSULA                        = 5389,
-    AREA_WANDERING_ISLE_WRECK_OF_THE_SKYSEEKER      = 5833,
-    ZONE_TEMPLE_JADE_SERPENT                        = 5956,
-    AREA_TEMPLE_JADE_SERPENT_SCROLLKEEPER_SANCTUM   = 6118,
-    AREA_TEMPLE_JADE_SERPENT_TERRACE_TWIN_DRAGONS   = 6119,
-    AREA_MOGUSHAN_PALACE_CRIMSON_ASSEMBLY_HALL      = 6471,
-    ZONE_HIGHMAUL                                   = 6996,
-    ZONE_TANAAN_JUNGLE                              = 7025,
-    AREA_TANAAN_DARK_PORTAL                         = 7037,
-    AREA_TANAAN_BLEEDING_ALTAR                      = 7039,
-    AREA_TANAAN_KARGATHAR_PROVING_GROUNDS           = 7040,
-    AREA_TANAAN_HEARTH_BLOOD                        = 7041,
-    AREA_TANAAN_UMBRAL_HALLS                        = 7042,
-    AREA_TANAAN_BLACKROCK_QUARRY                    = 7043,
-    AREA_TANAAN_PATH_OF_GLORY                       = 7044,
-    AREA_TANAAN_TARTHOG_BRIDGE                      = 7129,
-    AREA_HIGHMAUL_COLLISEUM                         = 7395,
-    ZONE_MARDUM                                     = 7705,
-    AREA_MARDUM_CRYPTIC_HOLLOW                      = 7754,
-    ZONE_DALARAN_LEGION                             = 7886,
-    AREA_BROKEN_TEETH                               = 8339,
-    ZONE_KROKUUN                                    = 8574,
-    AREA_KROKUUN_VINDICAAR                          = 8714,
-    ZONE_MACARE                                     = 8701,
-    ZONE_ANTORAN_WASTES                             = 8899,
-    AREA_MACAREE_VINDICAAR                          = 8915,
-    AREA_ANTORAN_WASTES_VINDICAAR                   = 8916,
-};
-
-enum SpecialSpells : uint32
-{
-    SPELL_MERCENARY_CONTRACT_HORDE      = 193472,
-    SPELL_MERCENARY_CONTRACT_ALLIANCE   = 193475,
 };
 
 #endif
